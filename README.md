@@ -99,7 +99,7 @@ Summary of packages that get installed and configured based on roles:
   - enable additional apparmor profiles
 - **role: hashicorp**
   - install vagrant, terraform, packer
-- **role: googlechrome**
+- **role: google_chrome**
   - add Google Chrome apt repo
   - install Google Chrome
 
