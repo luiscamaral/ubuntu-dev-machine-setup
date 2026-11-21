@@ -1,15 +1,26 @@
 # ubuntu-dev-machine-setup | Ubuntu 24.04 | Linux Mint 22
 
+---
+
+> [!WARNING]
+> **Discontinued**
+>
+> This repository is no longer actively maintained. I no longer use Ubuntu and cannot commit resources to addressing breaking changes.
+>
+> The code is provided as-is. Fork it, modify it, and take it in whatever direction you see fit.
+
+---
+
 ## Description
 
-This repo contains Ansible playbooks to configure your system as a development machine upon a clean install.
+This repository contains Ansible playbooks to configure your system as a development machine after a clean installation.
 
-The playbooks should run in Debian based system with minor modifications but was only tested with:
+The playbooks should run in a Debian-based system with minor modifications, but were only tested with:
 
 - **Ubuntu 24.04 LTS (Noble Numbat)**
-- **Linux Mint 22 (Wilma)**
+- **Linux Mint 22 (Wilma)/22.2 (Zara)**
 
-For other versions of Ubuntu, change to the other branches of this git repo. Other versions include Ubuntu 18.04 LTS, 20.04 LTS, 22.04 LTS.
+For other versions of Ubuntu, change to the other branches of this git repo. Other versions include Ubuntu 18.04 LTS, 20.04 LTS, and 22.04 LTS.
 
 ![bullet-train-zsh-theme](.images/screenshot-bullet-train.png)
 
@@ -25,9 +36,9 @@ Screenshot above is using *p10k zsh theme with tmux*
 
 ---
 
-## What gets installed and cofigured?
+## What gets installed and configured?
 
-I am a DevSecOps Engineer and my daily job include working with AWS, docker, ansible, terraform, etc. So if you are in a similar profession the installed system will suit your needs. It is also easy to extend using Ansible roles.
+I am a DevSecOps Engineer, and my daily job involves working with AWS, Docker, Ansible, Terraform, and other tools. So if you are in a similar profession, the installed system will suit your needs. It is also easy to extend using Ansible roles.
 
 Summary of packages that get installed and configured based on roles:
 
@@ -55,6 +66,7 @@ Summary of packages that get installed and configured based on roles:
   - option to turn on night light settings for eye comfort (set `base_permanent_night_light.night_light_enabled` to `True`)
   - enable `fzf` fuzzy finder in zsh terminal; check out this [YouTube video](https://www.youtube.com/watch?v=1a5NiMhqAR0) to see how to use it
   - install terminal emulators Tilix and Alacritty
+    - Alacritty will have tmux enabled by default (edit `~/.config/alacritty/alacritty.toml` to disable)
   - install [lazygit](https://github.com/jesseduffield/lazygit)
 - **role: zsh**
   - install zsh package and set user shell to zsh
@@ -72,15 +84,6 @@ Summary of packages that get installed and configured based on roles:
   - copy and enable sample `~/.tmux.conf` file with [tmux plugin manager](https://github.com/tmux-plugins/tpm) and several tmux plugins
     - open Tilix terminal and run `tmux` command, or enable custom command option in Tilix
     - edit `~/.tmux.conf` if necessary
-- **role: vim**
-  - install vim packages
-  - install [amix/vimrc](https://github.com/amix/vimrc) vim distribution
-  - create sample vim customization file in `~/.vim_runtime/my_configs.vim`
-    - additional vim settings are enabled in `~/.vim_runtime/my_configs.vim` which are not part of the Vim Distribution. Edit this file if necessary.
-- **role: neovim**
-  - install neovim packages
-  - install [lazyvim](https://www.lazyvim.org) neovim distribution
-    - open `nvim` from terminal and let the plugins get installed automatically on the initial launch
 - **role: vscode**
   - add Visual Studio Code apt repo
   - install Visual Studio Code
@@ -105,9 +108,9 @@ Summary of packages that get installed and configured based on roles:
 
 ---
 
-## Step 0 | Pre-requisites for running the ansible playbooks
+## Step 0 | Pre-requisites for running the Ansible playbooks
 
-On the system which you are going to setup using Ansible, perform these steps.
+On the system which you are going to set up using Ansible, perform these steps.
 
 You need to install `ansible` and `git` before running the playbooks. You can either install it using `pip` or `apt`.
 
@@ -152,8 +155,8 @@ After all is done, give your laptop a new life by rebooting.
 
 ## Known Issues
 
-- If the ansible playbook halts after completing a few tasks, simply run the playbook again. Since most of the tasks are idempotent, running the playbook multiple times won't break anything.
-- If your terminal shows any weird characters because of installing one of the zsh themes, simply change the font to a suitable Nerd Font from the terminal's settings.
+- If the Ansible playbook halts after completing a few tasks, rerun the playbook. Since most of the tasks are idempotent, running the playbook multiple times won't break anything.
+- If your terminal shows any weird characters because of installing one of the zsh themes, change the font to a suitable Nerd Font from the terminal's settings.
 - If you do not like the fuzzy finder completions in your terminal, remove or comment out the `#fzf` lines in your `~/.zshrc` (this is not a known issue but a feature)
 - When launching the terminal, having some [ohmyzsh](https://github.com/ohmyzsh/ohmyzsh) plugins like **docker** enabled results in the error: `tee: <snip> No such file or directory`. You can easily fix this by creating the missing directory manually: `mkdir -p ~/.antigen/bundles/robbyrussell/oh-my-zsh/cache/completions`.
 
@@ -163,10 +166,3 @@ After all is done, give your laptop a new life by rebooting.
 
 You are more than welcome to send any pull requests. However, the intention of this repo is to suit my development needs. So it might be better if you *fork* this repo instead for your own needs and personalization.
 
----
-
-## Donations
-
-If you think my work helped you in some way saving you time and effort, I am happy to receive any amount of donation. However, the code in this repo is completely free; absolutely *no strings attached*.
-
-Bitcoin (BTC): `bc1qzlhpm94vtk2ht67etdutzcy2g5an5v6g36tp0m`

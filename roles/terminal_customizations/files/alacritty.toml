@@ -78,7 +78,6 @@ action = "DecreaseFontSize"
 key = "Minus"
 mods = "Control"
 
-# uncomment below to start tmux on initial alacritty launch
-#[shell]
-#program = "/usr/bin/zsh"
-#args = ["-c", "if ! tmux ls 2>/dev/null | grep -q -E '^main.*attached'; then tmux attach -t main || tmux new -s main; else /usr/bin/zsh; fi"]
+[shell]
+program = "/usr/bin/zsh"
+args = ["-c", "if ! tmux ls 2>/dev/null | grep -q -E '^main.*attached'; then tmux attach -t main || tmux new -s main; else /usr/bin/zsh; fi"]

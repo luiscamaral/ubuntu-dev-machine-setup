@@ -1,5 +1,6 @@
 *.retry
 .vscode/
+.ansible/
 .history/
 .idea/
 *.sublime-workspace
